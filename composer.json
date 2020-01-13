@@ -1,5 +1,5 @@
 {
-    "name": "visualdialogue/kirby-listreveal",
+    "name": "visualdialogue/kirby-contact",
     "description": "List with items that expand to reveal more info via ajax",
     "type": "kirby-plugin",
     "license": "MIT",
@@ -19,6 +19,6 @@
     },
     "extra":
     {
-        "installer-name": "listreveal"
+        "installer-name": "contact"
     }
 }
