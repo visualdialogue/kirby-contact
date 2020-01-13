@@ -1,0 +1,49 @@
+.contact-form-wrapper
+    -if($success):
+        .contact__message.success
+            p!= $success
+    -else:
+        -if(isset($alert['error'])):
+            .contact__message.error
+                p!= $alert['error']
+        -endif
+
+        form.contact-form(action="<?= $page->url() ?>#get-in-touch" method="post")
+            .honeypot
+                label(for="website") Website<abbr title="required">*</abbr>
+                input#website(type="website" name="website")
+
+            .field.first-name-field
+                label.contact-form-label.required(for="name") First Name<abbr title="required">*</abbr>
+                input.form-input#firstname(type="text" name="firstname" value="<?= $data['firstname'] ?? '' ?>" required="required" tabindex="1")
+                != isset($alert['firstname']) ? '<span class="alert error">' . html($alert['firstname']) . '</span>' : ''
+
+            .field.last-name-field
+                label.contact-form-label.required(for="lastname") Last Name<abbr title="required">*</abbr>
+                input.form-input#lastname(type="text" name="lastname" value="<?= $data['lastname'] ?? '' ?>" required="required" tabindex="2")
+                != isset($alert['lastname']) ? '<span class="alert error">' . html($alert['lastname']) . '</span>' : ''
+
+            .field.email-field
+                label.contact-form-label.required(for="email") E-Mail<abbr title="required">*</abbr>
+                input.form-input#email(type="email" name="email" value="<?= $data['email'] ?? '' ?>" required="required" tabindex="3")
+                != isset($alert['email']) ? '<span class="alert error">' . html($alert['email']) . '</span>' : ''
+
+            .line-break
+                       
+            .message-field
+                .message-field-height.field
+                    label.message-field-label(for="message") Message<abbr title="required">*</abbr>
+                    //- entire condition here b/c otherwise get 5 spaces in empty message box
+                    -if(isset($data['message'])):
+                        textarea#message(name="message" tabindex="3")!= $data['message']
+                    -else:
+                        textarea#message(name="message" tabindex="4")
+                    -endif
+                    != isset($alert['message']) ? '<span class="alert error">' . html($alert['message']) . '</span>' : ''
+                        
+            .line-break
+
+            button.submit-button(type="submit" name="submit" value="Submit" tabindex="4") Submit
+
+        .contact-form-note *denotes required field
+    -endif

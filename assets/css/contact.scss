@@ -1,0 +1,118 @@
+.honeypot {
+    position: absolute;
+    left: -9999px;
+}
+.contact-form-wrapper {
+    padding-top: #{gutter() / 3};
+    @include break(sm) {
+        padding-top: #{gutter() / 3};
+    }
+}
+.contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    .field {
+        display: flex;
+        flex-direction: column;
+    }
+    label {
+        @extend %xxs-sans-title;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    input, textarea {
+        border: 1px solid black;
+        @extend %xxs-sans-title;
+    }
+    input {
+        padding: #{gutter() / 4} #{gutter() / 4};
+        @include break(sm) {
+            padding: #{gutter(of 4 wide) / 4} #{gutter(of 4 wide) / 4};
+        }
+    }
+    textarea {
+        // height based on span/col
+        height: 100%;
+        padding: #{gutter() / 4} #{gutter() / 4};
+        @include break(sm) {
+            padding: #{gutter(of 8) / 4} #{gutter(of 8) / 4};
+        }
+    }
+    abbr {
+        text-decoration: none;
+    }    
+    // label {
+    //     // hide, but keep visible for screen readers, from https://stackoverflow.com/a/54184047/4504073
+    //     border: 0;
+    //     clip: rect(0 0 0 0);
+    //     height: 1px;
+    //     margin: -1px;
+    //     overflow: hidden;
+    //     padding: 0;
+    //     position: absolute;
+    //     width: 1px;
+    // }
+}
+.field {
+    margin-bottom: #{gutter()};
+    @include break(sm) {
+        margin-bottom: #{gutter()};
+    }
+}
+.contact-form-label {
+    margin-bottom: #{gutter() / 4};
+    @include break(sm) {
+        margin-bottom: #{gutter(of 4 wide) / 4};
+    }
+}
+.first-name-field, .last-name-field, .email-field {
+    flex: 0 0 span(4);
+    @include break(sm) {
+        flex: 0 0 span(4);
+        margin-right: gutter();
+    }
+}
+.message-field {
+    position: relative;
+    flex: 0 0 span(4);
+    padding-bottom: span(2);
+    margin-bottom: #{gutter()};
+    @include break(sm) {
+        // set height based on cols/gutters
+        margin-bottom: #{gutter(of 8) / 2};
+        padding-bottom: span(2 wide);
+        flex: 0 0 span(8);
+    }
+}
+.message-field-height {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.message-field-label {
+    margin-bottom: #{gutter() / 4};
+    @include break(sm) {
+        margin-bottom: #{gutter(of 8) / 4};
+    }
+}
+.line-break {
+    // break to new row, from https://tobiasahlin.com/blog/masonry-with-css/
+    // or with html, from https://stackoverflow.com/a/29733127/4504073
+    width: 100%;
+}
+.contact-form-note {
+    @extend %xxs-sans-title;
+    margin-top: #{gutter() / 4};
+    @include break(sm) {
+        margin-top: #{gutter() / 4};
+    }
+}
+
+// messages
+.contact__message {
+    @extend %sm-sans-title;
+}
